@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spiderapp/core/utiles/shared/custom_elevated-button.dart';
+import 'package:spiderapp/core/utiles/shared/global_text.dart';
 import 'package:spiderapp/features/login/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:spiderapp/main.dart';
 
 import '../../../../../core/utiles/app_images.dart';
 
@@ -11,34 +15,35 @@ class LoginBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
-          child: CircleAvatar(
-            radius: 80,
-            backgroundColor: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20, top: 5),
-              child: Image.asset(
-                AppImages.logo,
-                height: 600,
-                fit: BoxFit.cover,
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Padding(
+                padding:  EdgeInsets.only(bottom: 33.h),
+                child: CircleAvatar(
+                  radius: 80.w,
+                  backgroundColor: Colors.white,
+                  child: Padding(
+                    padding:  EdgeInsets.only(right: 20.w, top: 5.h),
+                    child: Image.asset(
+                      AppImages.logo,
+                      height: 600.h,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
-            ),
+               Positioned(
+                  bottom: 0,
+                  child: SizedBox(
+                      child: GText(color: Colors.red, content:  "spiders", fontSize: 36, fontWeight: FontWeight.bold , textAlign: TextAlign.center,))) ,// App Title
+            ]
           ),
         ),
-        const SliverToBoxAdapter(child: SizedBox(height: 20)),
+         SliverToBoxAdapter(child: SizedBox(height: 20.h)),
 
-        // App Title
-        const SliverToBoxAdapter(
-          child: Text(
-            "spiders",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.red,
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.5,
-            ),
-          ),
-        ),
+
+
 
         // Subtitle
         const SliverToBoxAdapter(
@@ -73,7 +78,7 @@ class LoginBody extends StatelessWidget {
           ),
         ),
 
-        const SliverToBoxAdapter(child: SizedBox(height: 10)),
+        const SliverToBoxAdapter(child: SizedBox(height: 30)),
 
         SliverFillRemaining(
           hasScrollBody: false,
@@ -99,23 +104,17 @@ class LoginBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // Login Button
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 14, horizontal: 80),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      side: const BorderSide(color: Colors.red),
-                    ),
-                  ),
+                CustomElevatedButton(
+                  onPressed: () {  },
+                  width: MediaQuery.sizeOf(context).width*0.8,
                   child: const Text(
                     "Login",
                     style: TextStyle(color: Colors.red, fontSize: 18),
                   ),
+
                 ),
+                // Login Button
+
                 const SizedBox(height: 10),
 
                 // Or ext
@@ -125,26 +124,18 @@ class LoginBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
 
-                // Create Account Button
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 14, horizontal: 50),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                      ),
-                      side: BorderSide(color: Colors.red),
-                    ),
-                  ),
-                  child: const Text(
-                    "Create an account",
-                    style: TextStyle(color: Colors.red, fontSize: 18),
-                  ),
-                ),
+
+                 CustomElevatedButton(
+                   width: MediaQuery.sizeOf(context).width*0.8,
+                   onPressed: () {  },
+                   child: const Text(
+                     "Create an account",
+                     style: TextStyle(color: Colors.red, fontSize: 18),
+                   ),
+
+                 ),
+
+
 
                 const SizedBox(height: 20),
               ],
@@ -152,6 +143,5 @@ class LoginBody extends StatelessWidget {
           ),
         )
       ],
-    );
-  }
+    );}
 }
