@@ -36,13 +36,11 @@ class LoginBody extends StatelessWidget {
                Positioned(
                   bottom: 0,
                   child: SizedBox(
-                      child: GText(color: Colors.red, content:  "spiders", fontSize: 36, fontWeight: FontWeight.bold , textAlign: TextAlign.center,))) ,// App Title
+                      child: GText(color: Colors.red, content:  "spiders", fontSize: 36.w, fontWeight: FontWeight.bold , textAlign: TextAlign.center,))) ,// App Title
             ]
           ),
         ),
          SliverToBoxAdapter(child: SizedBox(height: 20.h)),
-
-
 
 
         // Subtitle
